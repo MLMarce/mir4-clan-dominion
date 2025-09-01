@@ -107,14 +107,14 @@ const mockBosses: BossData[] = [
 
 const Index = () => {
   const [resources, setResources] = useState({
-    aceroOscuro: 5000,
-    energia: 3000,
+    aceroOscuro: 5000000,
+    energia: 5000000,
     oro: 10000
   });
 
   const [initialResources] = useState({
-    aceroOscuro: 5000,
-    energia: 3000,
+    aceroOscuro: 5000000,
+    energia: 5000000,
     oro: 10000
   });
 
