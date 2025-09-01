@@ -127,9 +127,10 @@
 
   .gaming-card-hover {
     @apply transition-all duration-300 hover:border-primary/60 hover:scale-[1.02];
-    &:hover {
-      box-shadow: var(--shadow-gold), var(--shadow-card);
-    }
+  }
+
+  .gaming-card-hover:hover {
+    box-shadow: var(--shadow-gold), var(--shadow-card);
   }
 
   .resource-card {
