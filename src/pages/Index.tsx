@@ -205,10 +205,10 @@ const Index = () => {
       </header>
 
       {/* Main Content */}
-      <main className="container mx-auto px-4 pb-12">
-        <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
+      <main className="container mx-auto px-4 pb-12 overflow-x-hidden">
+        <div className="grid gap-6 lg:grid-cols-[320px_1fr_360px] items-start min-w-0">
           {/* Resources Panel */}
-          <div className="xl:col-span-3">
+          <div className="min-w-0">
             <ClanResourcesPanel 
               resources={resources}
               onResourceChange={handleResourceChange}
@@ -216,7 +216,7 @@ const Index = () => {
           </div>
 
           {/* Boss Cards Grid */}
-          <div className="xl:col-span-6">
+          <div className="min-w-0">
             <div className="space-y-6">
               <div className="text-center">
                 <h2 className="text-2xl font-bold text-primary mb-2 flex items-center justify-center">
@@ -226,25 +226,26 @@ const Index = () => {
                 <div className="w-20 h-1 bg-gradient-red mx-auto rounded-full"></div>
               </div>
               
-              <div className="grid gap-6 md:grid-cols-2">
+              <div className="flex flex-col gap-4 max-h-[calc(100vh-220px)] overflow-y-auto">
                 {mockBosses.map(boss => (
-                  <BossCard
-                    key={boss.id}
-                    boss={boss}
-                    isSelected={isBossSelected(boss.id)}
-                    hasBeenRepeated={repeatedBosses.has(boss.id)}
-                    canAffordFirst={canAffordFirstAssault(boss)}
-                    canAffordRepeat={canAffordRepeat(boss)}
-                    onSelect={() => handleBossSelect(boss)}
-                    onRepeat={() => handleBossRepeat(boss)}
-                  />
+                  <div key={boss.id} className="w-full">
+                    <BossCard
+                      boss={boss}
+                      isSelected={isBossSelected(boss.id)}
+                      hasBeenRepeated={repeatedBosses.has(boss.id)}
+                      canAffordFirst={canAffordFirstAssault(boss)}
+                      canAffordRepeat={canAffordRepeat(boss)}
+                      onSelect={() => handleBossSelect(boss)}
+                      onRepeat={() => handleBossRepeat(boss)}
+                    />
+                  </div>
                 ))}
               </div>
             </div>
           </div>
 
           {/* Assault Simulator */}
-          <div className="xl:col-span-3">
+          <div className="min-w-0">
             <AssaultSimulator
               assaultPlan={assaultPlan}
               remainingResources={resources}

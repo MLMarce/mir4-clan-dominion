@@ -44,11 +44,11 @@ export const ClanResourcesPanel = ({ resources, onResourceChange }: ClanResource
         <div className="w-20 h-1 bg-gradient-gold mx-auto rounded-full"></div>
       </div>
       
-      <div className="grid gap-4 md:grid-cols-1 lg:grid-cols-3">
+      <div className="flex flex-col space-y-4">
         {resourceItems.map((item) => {
           const IconComponent = item.icon;
           return (
-            <div key={item.key} className="resource-card">
+            <div key={item.key} className="resource-card w-full">
               <div className="flex items-center space-x-3 mb-4">
                 <IconComponent className={`h-8 w-8 ${item.color}`} />
                 <Label className="text-lg font-semibold text-card-foreground">
