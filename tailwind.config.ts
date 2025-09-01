@@ -61,7 +61,29 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Custom gaming colors
+				gold: {
+					DEFAULT: 'hsl(var(--gold))',
+					dark: 'hsl(var(--gold-dark))'
+				},
+				red: {
+					accent: 'hsl(var(--red-accent))',
+					dark: 'hsl(var(--red-dark))'
+				},
+				steel: 'hsl(var(--steel))',
+				energy: 'hsl(var(--energy))'
+			},
+			backgroundImage: {
+				'gradient-gold': 'var(--gradient-gold)',
+				'gradient-red': 'var(--gradient-red)',
+				'gradient-dark': 'var(--gradient-dark)',
+				'gradient-card': 'var(--gradient-card)'
+			},
+			boxShadow: {
+				'gold': 'var(--shadow-gold)',
+				'red': 'var(--shadow-red)',
+				'gaming': 'var(--shadow-card)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

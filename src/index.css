@@ -2,41 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* MIR4 MMORPG Gaming Design System */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Dark gaming theme colors */
+    --background: 220 15% 8%;
+    --foreground: 45 100% 85%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 220 20% 12%;
+    --card-foreground: 45 95% 88%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 220 25% 10%;
+    --popover-foreground: 45 95% 88%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Gold primary theme */
+    --primary: 45 100% 55%;
+    --primary-foreground: 220 25% 8%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Dark secondary */
+    --secondary: 220 25% 15%;
+    --secondary-foreground: 45 90% 80%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 20% 18%;
+    --muted-foreground: 45 50% 65%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Red accent for warnings/damage */
+    --accent: 0 85% 55%;
+    --accent-foreground: 45 95% 88%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 75% 50%;
+    --destructive-foreground: 45 95% 88%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 45 60% 25%;
+    --input: 220 25% 15%;
+    --ring: 45 100% 60%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Custom gaming colors */
+    --gold: 45 100% 55%;
+    --gold-dark: 45 85% 45%;
+    --red-accent: 0 85% 55%;
+    --red-dark: 0 75% 45%;
+    --steel: 220 15% 35%;
+    --energy: 210 85% 55%;
+
+    /* Gradients */
+    --gradient-gold: linear-gradient(135deg, hsl(45 100% 65%), hsl(45 85% 45%));
+    --gradient-red: linear-gradient(135deg, hsl(0 85% 65%), hsl(0 75% 45%));
+    --gradient-dark: linear-gradient(135deg, hsl(220 25% 15%), hsl(220 20% 8%));
+    --gradient-card: linear-gradient(145deg, hsl(220 20% 12%), hsl(220 15% 10%));
+
+    /* Shadows */
+    --shadow-gold: 0 0 30px hsl(45 100% 55% / 0.3);
+    --shadow-red: 0 0 25px hsl(0 85% 55% / 0.25);
+    --shadow-card: 0 8px 32px hsl(220 50% 4% / 0.8);
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -94,6 +117,68 @@ All colors MUST be HSL.
   }
 }
 
+/* Custom gaming components */
+@layer components {
+  .gaming-card {
+    @apply bg-card border border-primary/30 rounded-lg shadow-lg;
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-card), inset 0 1px 0 hsl(45 100% 55% / 0.1);
+  }
+
+  .gaming-card-hover {
+    @apply transition-all duration-300 hover:border-primary/60 hover:scale-[1.02];
+    &:hover {
+      box-shadow: var(--shadow-gold), var(--shadow-card);
+    }
+  }
+
+  .resource-card {
+    @apply gaming-card gaming-card-hover p-6;
+    border: 2px solid hsl(45 60% 25%);
+  }
+
+  .boss-card {
+    @apply gaming-card gaming-card-hover p-6 cursor-pointer;
+    border: 2px solid hsl(45 60% 25%);
+  }
+
+  .boss-card.selected {
+    @apply border-primary shadow-lg;
+    box-shadow: var(--shadow-gold), var(--shadow-card);
+  }
+
+  .gold-gradient {
+    background: var(--gradient-gold);
+  }
+
+  .red-gradient {
+    background: var(--gradient-red);
+  }
+
+  .dark-gradient {
+    background: var(--gradient-dark);
+  }
+}
+
+/* Custom animations */
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 20px hsl(45 100% 55% / 0.3); }
+  50% { box-shadow: 0 0 30px hsl(45 100% 55% / 0.6); }
+}
+
+@keyframes glow-red {
+  0%, 100% { box-shadow: 0 0 15px hsl(0 85% 55% / 0.3); }
+  50% { box-shadow: 0 0 25px hsl(0 85% 55% / 0.6); }
+}
+
+.pulse-gold {
+  animation: pulse-gold 2s ease-in-out infinite;
+}
+
+.glow-red {
+  animation: glow-red 1.5s ease-in-out infinite;
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -101,5 +186,7 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background: var(--gradient-dark);
+    min-height: 100vh;
   }
 }
