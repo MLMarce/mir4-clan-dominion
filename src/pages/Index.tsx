@@ -27,46 +27,81 @@ interface AssaultPlan {
 
 const mockBosses: BossData[] = [
   {
-    id: "dragon-rey",
-    name: "Dragón Rey Carmesí",
-    level: 180,
-    firstCost: { aceroOscuro: 500, energia: 300 },
+    id: "zorro",
+    name: "Zorro",
+    level: 35,
+    firstCost: { aceroOscuro: 125000, energia: 125000 },
     repeatCost: { oro: 1000 }
   },
   {
-    id: "titan-sombra",
-    name: "Titán de las Sombras",
-    level: 200,
-    firstCost: { aceroOscuro: 700, energia: 400 },
-    repeatCost: { oro: 1500 }
+    id: "toro",
+    name: "Toro",
+    level: 50,
+    firstCost: { aceroOscuro: 250000, energia: 250000 },
+    repeatCost: { oro: 1200 }
   },
   {
-    id: "bestia-ancestral",
-    name: "Bestia Ancestral",
-    level: 220,
-    firstCost: { aceroOscuro: 800, energia: 500 },
+    id: "roca",
+    name: "Roca",
+    level: 65,
+    firstCost: { aceroOscuro: 375000, energia: 375000 },
+    repeatCost: { oro: 1400 }
+  },
+  {
+    id: "luna",
+    name: "Luna",
+    level: 80,
+    firstCost: { aceroOscuro: 500000, energia: 500000 },
+    repeatCost: { oro: 1600 }
+  },
+  {
+    id: "abominacion",
+    name: "Abominación",
+    level: 95,
+    firstCost: { aceroOscuro: 625000, energia: 625000 },
+    repeatCost: { oro: 1800 }
+  },
+  {
+    id: "dragon",
+    name: "Dragón",
+    level: 115,
+    firstCost: { aceroOscuro: 750000, energia: 750000 },
     repeatCost: { oro: 2000 }
   },
   {
-    id: "emperador-demonio",
-    name: "Emperador Demonio",
-    level: 250,
-    firstCost: { aceroOscuro: 1000, energia: 600 },
-    repeatCost: { oro: 2500 }
+    id: "flama-azul",
+    name: "Flama Azul",
+    level: 135,
+    firstCost: { aceroOscuro: 875000, energia: 875000 },
+    repeatCost: { oro: 2200 }
   },
   {
-    id: "guardian-infinito",
-    name: "Guardián Infinito",
-    level: 300,
-    firstCost: { aceroOscuro: 1200, energia: 800 },
+    id: "escorpion",
+    name: "Escorpión",
+    level: 150,
+    firstCost: { aceroOscuro: 1000000, energia: 1000000 },
+    repeatCost: { oro: 2400 }
+  },
+  {
+    id: "cerbero",
+    name: "Cerbero",
+    level: 165,
+    firstCost: { aceroOscuro: 1125000, energia: 1125000 },
+    repeatCost: { oro: 2600 }
+  },
+  {
+    id: "oscuranima",
+    name: "Oscuránima",
+    level: 180,
+    firstCost: { aceroOscuro: 1250000, energia: 1250000 },
+    repeatCost: { oro: 2800 }
+  },
+  {
+    id: "deidad",
+    name: "Deidad",
+    level: 195,
+    firstCost: { aceroOscuro: 1375000, energia: 1375000 },
     repeatCost: { oro: 3000 }
-  },
-  {
-    id: "leviatan-dorado",
-    name: "Leviatán Dorado",
-    level: 350,
-    firstCost: { aceroOscuro: 1500, energia: 1000 },
-    repeatCost: { oro: 4000 }
   }
 ];
 
