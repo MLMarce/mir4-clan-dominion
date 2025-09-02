@@ -79,7 +79,7 @@ export const BossCard = ({
         <div className="bg-accent/20 rounded-lg p-3">
           <h4 className="text-sm font-semibold text-accent-foreground mb-2 flex items-center">
             <Repeat className="h-4 w-4 mr-1" />
-            Repetición (Solo 1x)
+            Repetición
           </h4>
           <div className="flex items-center space-x-1 text-sm">
             <Coins className="h-4 w-4 text-gold" />

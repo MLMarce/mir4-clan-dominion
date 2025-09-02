@@ -52,7 +52,11 @@
     --gradient-gold: linear-gradient(135deg, hsl(45 100% 65%), hsl(45 85% 45%));
     --gradient-red: linear-gradient(135deg, hsl(0 85% 65%), hsl(0 75% 45%));
     --gradient-dark: linear-gradient(135deg, hsl(220 25% 15%), hsl(220 20% 8%));
-    --gradient-card: linear-gradient(145deg, hsl(220 20% 12%), hsl(220 15% 10%));
+    --gradient-card: linear-gradient(
+      145deg,
+      hsl(220 20% 12%),
+      hsl(220 15% 10%)
+    );
 
     /* Shadows */
     --shadow-gold: 0 0 30px hsl(45 100% 55% / 0.3);
@@ -126,7 +130,7 @@
   }
 
   .gaming-card-hover {
-    @apply transition-all duration-300 hover:border-primary/60 hover:scale-[1.02];
+    @apply transition-all duration-300 hover:border-primary/60;
   }
 
   .gaming-card-hover:hover {
@@ -163,13 +167,26 @@
 
 /* Custom animations */
 @keyframes pulse-gold {
-  0%, 100% { box-shadow: 0 0 20px hsl(45 100% 55% / 0.3); }
-  50% { box-shadow: 0 0 30px hsl(45 100% 55% / 0.6); }
+  0%,
+  100% {
+    filter: drop-shadow(0 0 10px hsl(45 100% 55% / 0.3));
+  }
+  50% {
+    filter: drop-shadow(
+      0 0 30px hsl(45 100% 55% / 0.6),
+      0 0 40px hsl(45 100% 55% / 0.8)
+    );
+  }
 }
 
 @keyframes glow-red {
-  0%, 100% { box-shadow: 0 0 15px hsl(0 85% 55% / 0.3); }
-  50% { box-shadow: 0 0 25px hsl(0 85% 55% / 0.6); }
+  0%,
+  100% {
+    box-shadow: 0 0 15px hsl(0 85% 55% / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 25px hsl(0 85% 55% / 0.6);
+  }
 }
 
 .pulse-gold {

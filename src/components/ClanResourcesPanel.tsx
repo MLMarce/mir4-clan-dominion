@@ -10,9 +10,10 @@ interface ClanResourcesPanelProps {
     oro: number;
   };
   onResourceChange: (resource: string, value: number) => void;
+  onInitialResourceChange: (resource: string, value: number) => void;
 }
 
-export const ClanResourcesPanel = ({ resources, onResourceChange }: ClanResourcesPanelProps) => {
+export const ClanResourcesPanel = ({ resources, onResourceChange, onInitialResourceChange }: ClanResourcesPanelProps) => {
   const resourceItems = [
     {
       key: 'aceroOscuro',
@@ -64,8 +65,9 @@ export const ClanResourcesPanel = ({ resources, onResourceChange }: ClanResource
                 min="0"
               />
               
-              <div className="mt-2 text-center">
+              <div className="mt-2 text-center flex items-center justify-center gap-2">
                 <span className="text-sm text-muted-foreground">Disponible</span>
+                <button onClick={(e) => onInitialResourceChange(item.key, item.value)}>Actualizar</button>
               </div>
             </div>
           );

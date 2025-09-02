@@ -112,7 +112,7 @@ const Index = () => {
     oro: 10000
   });
 
-  const [initialResources] = useState({
+  const [initialResources, setInitialResources] = useState({
     aceroOscuro: 5000000,
     energia: 5000000,
     oro: 10000
@@ -128,14 +128,21 @@ const Index = () => {
     }));
   }, []);
 
+  const handleInitialResource = useCallback((resource: string, value: number) => {
+    setInitialResources(prev => ({
+      ...prev,
+      [resource]: value
+    }))
+  },[])
+
   const canAffordFirstAssault = useCallback((boss: BossData) => {
-    return resources.aceroOscuro >= boss.firstCost.aceroOscuro && 
-           resources.energia >= boss.firstCost.energia;
+    return resources.aceroOscuro >= boss.firstCost.aceroOscuro &&
+      resources.energia >= boss.firstCost.energia;
   }, [resources]);
 
   const canAffordRepeat = useCallback((boss: BossData) => {
-    return resources.oro >= boss.repeatCost.oro && 
-           !repeatedBosses.has(boss.id);
+    return resources.oro >= boss.repeatCost.oro &&
+      !repeatedBosses.has(boss.id);
   }, [resources, repeatedBosses]);
 
   const isBossSelected = useCallback((bossId: string) => {
@@ -151,7 +158,7 @@ const Index = () => {
         aceroOscuro: prev.aceroOscuro + boss.firstCost.aceroOscuro,
         energia: prev.energia + boss.firstCost.energia
       }));
-      
+
       // If boss was repeated, restore oro and remove from repeated set
       const planEntry = assaultPlan.find(plan => plan.bossId === boss.id);
       if (planEntry?.hasRepeat) {
@@ -183,21 +190,21 @@ const Index = () => {
 
   const handleBossRepeat = useCallback((boss: BossData) => {
     if (!isBossSelected(boss.id) || repeatedBosses.has(boss.id)) return;
-    
+
     if (canAffordRepeat(boss)) {
       // Update plan to include repeat
-      setAssaultPlan(prev => prev.map(plan => 
-        plan.bossId === boss.id 
+      setAssaultPlan(prev => prev.map(plan =>
+        plan.bossId === boss.id
           ? { ...plan, hasRepeat: true }
           : plan
       ));
-      
+
       // Deduct oro and mark as repeated
       setResources(prev => ({
         ...prev,
         oro: prev.oro - boss.repeatCost.oro
       }));
-      
+
       setRepeatedBosses(prev => new Set(prev).add(boss.id));
     }
   }, [isBossSelected, canAffordRepeat, repeatedBosses]);
@@ -213,27 +220,27 @@ const Index = () => {
       {/* Header */}
       <header className="relative text-center py-12 overflow-hidden">
         {/* Hero Background Image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
           style={{ backgroundImage: `url(${heroImage})` }}
         ></div>
-        
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/20 via-transparent to-background/80"></div>
-        
+
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-background/50"></div>
+
         <div className="relative z-10">
           <div className="flex items-center justify-center mb-4">
-            <Crown className="h-12 w-12 text-gold mr-4 pulse-gold" />
+            <Crown className="h-12 w-12 text-gold mr-4" />
             <h1 className="text-4xl md:text-6xl font-bold bg-gradient-gold bg-clip-text text-transparent">
               Bienvenidos al Clan Eztrokes2
             </h1>
-            <Crown className="h-12 w-12 text-gold ml-4 pulse-gold" />
+            <Crown className="h-12 w-12 text-gold ml-4" />
           </div>
           <div className="flex items-center justify-center">
-            <Swords className="h-6 w-6 text-red-accent mr-2 glow-red" />
+            <Swords className="h-6 w-6 text-red-accent mr-2" />
             <p className="text-xl text-muted-foreground">
               Panel de control de asaltos y recursos
             </p>
-            <Swords className="h-6 w-6 text-red-accent ml-2 glow-red" />
+            <Swords className="h-6 w-6 text-red-accent ml-2" />
           </div>
           <div className="w-32 h-1 bg-gradient-gold mx-auto mt-4 rounded-full"></div>
         </div>
@@ -244,9 +251,10 @@ const Index = () => {
         <div className="grid gap-6 lg:grid-cols-[320px_1fr_360px] items-start min-w-0">
           {/* Resources Panel */}
           <div className="min-w-0">
-            <ClanResourcesPanel 
+            <ClanResourcesPanel
               resources={resources}
               onResourceChange={handleResourceChange}
+              onInitialResourceChange={handleInitialResource}
             />
           </div>
 
@@ -260,8 +268,8 @@ const Index = () => {
                 </h2>
                 <div className="w-20 h-1 bg-gradient-red mx-auto rounded-full"></div>
               </div>
-              
-              <div className="flex flex-col gap-4 max-h-[calc(100vh-220px)] overflow-y-auto">
+
+              <div className="flex flex-col gap-4 max-h-[calc(100vh-50px)] overflow-y-auto">
                 {mockBosses.map(boss => (
                   <div key={boss.id} className="w-full">
                     <BossCard
