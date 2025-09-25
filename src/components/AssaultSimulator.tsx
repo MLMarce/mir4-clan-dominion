@@ -13,6 +13,7 @@ interface AssaultPlan {
 }
 
 interface AssaultSimulatorProps {
+  clan: string;
   assaultPlan: AssaultPlan[];
   remainingResources: {
     aceroOscuro: number;
@@ -32,6 +33,7 @@ interface AssaultSimulatorProps {
 }
 
 export const AssaultSimulator = ({
+  clan,
   assaultPlan,
   remainingResources,
   initialResources,
@@ -40,7 +42,7 @@ export const AssaultSimulator = ({
   const { toast } = useToast();
 
   const generatePlanText = () => {
-    let planText = "📜 Plan de Asaltos - Clan Eztrokes2\n\n";
+    let planText = `📜 Plan de Asaltos - Clan ${clan}\n\n`;
     
     if (assaultPlan.length === 0) {
       planText += "🚫 No hay asaltos planificados\n";

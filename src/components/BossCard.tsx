@@ -15,6 +15,7 @@ interface BossData {
     oro: number;
   };
   image?: string;
+  statues: number
 }
 
 interface BossCardProps {
@@ -46,6 +47,9 @@ export const BossCard = ({
             <h3 className="text-lg font-bold text-card-foreground">{boss.name}</h3>
             <Badge variant="secondary" className="text-xs">
               Nivel {boss.level}
+            </Badge>
+            <Badge variant="secondary" className="text-xs">
+              Estatuas {boss.statues}
             </Badge>
           </div>
         </div>
